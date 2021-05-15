@@ -65,13 +65,13 @@ class Red:
                 for neuron in self.layers[-1]:
                     weight=random.random()
                     weights.append(weight)
-                A=Neuron(None,self.layers[-1],weights,None,None)
-                layer.append(A)
+                new_neuron=Neuron(None,self.layers[-1],weights,None,None)
+                layer.append(new_neuron)
 
         else:        
             for i in range(numero_neuronas):  
-                A=Neuron(None,None,None,None,None)
-                layer.append(A)
+                new_neuron=Neuron(None,None,None,None,None)
+                layer.append(new_neuron)
 
         self.layers.append(layer)    
 
@@ -100,19 +100,17 @@ class Red:
             self.layers[0][i].value=input[i]
 
         for k in range(1,len(self.layers)):
-            for j in range(len(self.layers[k])):
-                Neuron=self.layers[k][j]
-                self.layers[k][j].value=self.calculaValor(Neuron)
+            for neuron in self.layers[k]:
+                neuron.value=self.calculaValor(neuron)
     
         predict=list()
 
-        for n in range(len(self.layers[-1])):
-            values=self.layers[-1][n].value 
-            predict.append(values)
+        for neuron in self.layers[-1]:
+            predict.append(neuron.value)
 
         return predict
 
-    def actualizaPesos(self,valorEsperado):
+    def actualizaPesos(self,learningRate,valorEsperado):
 
         for layer in reversed(self.layers):
             for neuron in layer:
@@ -137,5 +135,5 @@ r.next_layers()
 ini_output=[30,40,60,10,4]
 output= r.predict(ini_output)
 
-learningRate=0.4
+#learningRate=0.4
 print (output)
