@@ -37,7 +37,7 @@ class Neuron:
         for weight in self.weights:
             new_weight=weight -learningRate*gradient
             aux.append(new_weight)
-            
+
         self.weights_aux=aux
 
         return None          
@@ -112,6 +112,19 @@ class Red:
 
         return predict
 
+    def actualizaPesos(self,valorEsperado):
+
+        for layer in reversed(self.layers):
+            for neuron in layer:
+                neuron.calculaNuevoPeso(learningRate,valorEsperado)
+
+        for layer in self.layers:
+            for neuron in layer:
+                neuron.weights.clear()
+                neuron.weights=neuron.weights_aux
+
+        return None    
+
 
 r =Red(None)
 r.CrearRedVacia()
@@ -124,5 +137,5 @@ r.next_layers()
 ini_output=[30,40,60,10,4]
 output= r.predict(ini_output)
 
+learningRate=0.4
 print (output)
-
