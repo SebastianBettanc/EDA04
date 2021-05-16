@@ -121,19 +121,108 @@ class Red:
                 neuron.weights.clear()
                 neuron.weights=neuron.weights_aux
 
+        return None
+
+    def entrenar(self,instancias_entrenamiento,numIteraciones,learningRate): #lista de inputs , valor esperado numero 0 del csv # ,valor_esperado 
+
+        L=instancias_entrenamiento      #numIteraciones = len de instancias_entrenamiento
+        tests=random.sample(L,len(L))
+        predictions=list()
+
+        
+        for x in range(numIteraciones):         #700
+
+            date_predicted=self.predict(tests[x][1])#retorna el valor de la prediccion hecha
+            self.actualizaPesos(learningRate,tests[x][0]) #valor_esperado de la instancia_entrenamiento aqui xd
+                                                #predictions.append(date_predicted)
+
+            if x%5==0:
+                #calcular_error
+                ecm=0
+                print("numero de iteracion :"+x+"\nvalor predicho por la red :" + date_predicted+"\nvalor esperado de la red :"+tests[x][0])
+                for node in self.layers[-1]: 
+                    ecm+=(1/len(self.layers[-1][-1]))*(node.value-tests[x][0])**2
+                print("error cuadrado medio :"+ecm)                   #IMPRIMIR EN PANTALLA 
+                #print('cls') limpiar pantalla
+
+
+
+        return None
+    def tests (self,instancias_pruebas,numIteraciones):
+
+        L=instancias_pruebas
+        tests=random.sample(L,len(L))
+        predictions=list() # lista para guardar , inutil x ahora
+
+        for x in range(numIteraciones):
+
+            date_predicted=self.predict(tests[x][1])#retorna el valor de la prediccion hecha #predictions.append(date_predicted) # lista con valores de la neurona #retorna lista pre
+            data_red=round(date_predicted[-1],2) #error del 1%
+            print("numero de iteracion :"+x+"\nvalor predicho por la red :" + label(data_red)+"\nvalor esperado de la red :"+label(tests[x][0]))
         return None    
 
 
-r =Red(None)
-r.CrearRedVacia()
-r.AgregarCapa(5)
-r.AgregarCapa(4)
-r.AgregarCapa(5)
-r.AgregarCapa(2)
+
+def leer_dataset():
+    ruta="ruta.png"# funcion get para instalar #70% de las lineas es para entrenar (le paso pixeles y paso el valor esperado (0 a 9), el otro 30% de los casos le paso pixeles)
+                    # y me retorna el numero de que cree que es
+
+    L=list()
+    L.append(1)
+    L.append(2)
+    L.append(3)
+    return L
+
+def generate_text(key):
+
+    texts={1:""
+
+    }
+
+    return texts[key]
+
+def label(key): #crear epsilon 
+
+
+
+    
+    dictionary={0.0: "Polera"   ,
+                1.0: "Pantalón",
+                2.0: "sweater",
+                3.0: "Vestido",
+                4.0: "Saco",
+                5.0: "Sandalia",
+                6.0: "Camisa",
+                7.0: "Zapatilla",
+                8.0: "Bolso/cartera",
+                9.0: "Bota"}
+
+    if key in dictionary:
+        return dictionary[key]
+    else:
+        return "No es ropa"
+
+#ini_output=[30,40,60,10,4]  # en ini input, van los pixeles ## LEER CSV  
+
+#accurracy (%de diferencia xd)
+
+L=leer_dataset()
+tests_entrenamiento=L[0] # =[ A_1,A_2 ],lista con todos los tests de entrenamiento cada elemento es una  
+tests_pruebas=L[1]       # lista con el dataset y el valor esperado([1,2,3,4,etc.],9) =A
+learningRate=0.7
+pixels_total=784
+
+r =Red(None)                #70% del dataset = entrenamiento ; 30% del dataset siguiente es para test ( ver que wea es con los pixeles que le doi) , funcion leer dataset
+r.CrearRedVacia()           #predecir cuando este entrenada la red , por default aun esta sin entrenar (pesos aleatorios tira cualquier wea),
+r.AgregarCapa(pixels_total) # CALMAO 
+r.AgregarCapa(pixels_total)
+r.AgregarCapa(pixels_total)
+r.AgregarCapa(pixels_total)
+r.AgregarCapa(1)
 r.next_layers()
 
-ini_output=[30,40,60,10,4]
-output= r.predict(ini_output)
+r.entrenar(tests_entrenamiento,len(tests_entrenamiento),learningRate)
+r.tests(tests_pruebas,len(tests_pruebas))
 
-#learningRate=0.4
-print (output)
+
+
