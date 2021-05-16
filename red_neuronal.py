@@ -206,9 +206,9 @@ def label(key): #crear epsilon
 
 #accurracy (%de diferencia xd)
 
-L=leer_dataset()
-tests_entrenamiento=L[0] # =[ A_1,A_2 ],lista con todos los tests de entrenamiento cada elemento es una  
-tests_pruebas=L[1]       # lista con el dataset y el valor esperado([1,2,3,4,etc.],9) =A
+#L=leer_dataset()
+#tests_entrenamiento=L[0] # =[ A_1,A_2 ],lista con todos los tests de entrenamiento cada elemento es una  
+#tests_pruebas=L[1]       # lista con el dataset y el valor esperado([1,2,3,4,etc.],9) =A
 learningRate=0.7
 pixels_total=784
 
@@ -221,8 +221,8 @@ r.AgregarCapa(pixels_total)
 r.AgregarCapa(1)
 r.next_layers()
 
-r.entrenar(tests_entrenamiento,len(tests_entrenamiento),learningRate)
-r.tests(tests_pruebas,len(tests_pruebas))
+#r.entrenar(tests_entrenamiento,len(tests_entrenamiento),learningRate)
+#r.tests(tests_pruebas,len(tests_pruebas))
 
 
 
