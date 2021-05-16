@@ -1,5 +1,10 @@
 import math as mt
-import random 
+import random
+
+
+import leercsv
+from collections import deque
+
 
 class Neuron:
     def __init__(self,value,layer,weights,weights_aux,next_layer):#
@@ -19,17 +24,18 @@ class Neuron:
 
     def calculaNuevoPeso(self,learningRate,valorESperado):
 
+        sumatoria=0
+        delta=0
+
         if self.next_layer==None:
             delta=(self.activation()-valorESperado)*self.derivate()
-        else:
-            sumatoria=0
+        else:       #falla la condicion en delta_i       , delta=0 arruiona la wea y no cambian los valores
             for neuron in self.next_layer:
-
                 delta_i= (neuron.activation()-valorESperado)
-
-                for weight in self.weights:
+                weights=neuron.weights
+                for weight in weights:
                     sumatoria+=delta_i*weight
-            delta=sumatoria*self.derivate()
+                    delta=sumatoria*self.derivate()
 
         gradient=delta*self.activation()
         aux=list()
@@ -40,7 +46,8 @@ class Neuron:
 
         self.weights_aux=aux
 
-        return None          
+        return None
+           
 
 class Red:
 
@@ -112,42 +119,58 @@ class Red:
 
     def actualizaPesos(self,learningRate,valorEsperado):
 
-        for layer in reversed(self.layers):
-            for neuron in layer:
+        aux=self.layers[1:]
+        layers=aux
+        aux.reverse()
+
+
+        for layer_aux in aux: #layer lista de nmodos la
+            for neuron in layer_aux:
                 neuron.calculaNuevoPeso(learningRate,valorEsperado)
-
-        for layer in self.layers:
-            for neuron in layer:
-                neuron.weights.clear()
+                print("ANTES",neuron.weights,"  ",neuron.weights_aux)
                 neuron.weights=neuron.weights_aux
+                print("ASIGNADO",neuron.weights,"  ",neuron.weights_aux)
+
+                
+
+
 
         return None
 
-    def entrenar(self,instancias_entrenamiento,numIteraciones,learningRate): #lista de inputs , valor esperado numero 0 del csv # ,valor_esperado 
+    def entrenar(self,instancias_entrenamiento,learningRate): #lista de inputs , valor esperado numero 0 del csv # ,valor_esperado 
 
+        L=list()
         L=instancias_entrenamiento      #numIteraciones = len de instancias_entrenamiento
-        tests=random.sample(L,len(L))
-        predictions=list()
-
         
-        for x in range(numIteraciones):         #700
-
-            date_predicted=self.predict(tests[x][1])#retorna el valor de la prediccion hecha
-            self.actualizaPesos(learningRate,tests[x][0]) #valor_esperado de la instancia_entrenamiento aqui xd
-                                                #predictions.append(date_predicted)
-
-            if x%5==0:
-                #calcular_error
-                ecm=0
-                print("numero de iteracion :"+x+"\nvalor predicho por la red :" + date_predicted+"\nvalor esperado de la red :"+tests[x][0])
-                for node in self.layers[-1]: 
-                    ecm+=(1/len(self.layers[-1][-1]))*(node.value-tests[x][0])**2
-                print("error cuadrado medio :"+ecm)                   #IMPRIMIR EN PANTALLA 
-                #print('cls') limpiar pantalla
+        #L=[(100,[2,3]),(400,[3,4]),(500,[5,6]),(600,[39,1234]),(700,[3123,24]),(800,[9,10])]
+        tests=random.sample(L,len(L))
+        #print (tests)
+        #predictions=list()
+        x=0
+        #print (self.layers)
+        
+        for test in tests:#                                     largo del dataset
+            x+=1
+            input=test[1]
+            expected_value=test[0]
+            data_predicted=self.predict(input)#                 retorna el valor de la prediccion hecha
+            if x>=2:
+                self.actualizaPesos(learningRate,expected_value)#   valor_esperado de la instancia_entrenamiento aqui xd
+  #     #                                                       predictions.append(date_predicted)
+  #     #
+  #     #    if x%1==0: #cada cuanto se checkea el error cuadrado medio
+  #     #                                               calcular_error
+            ecm=0
+            for node in self.layers[-1]: 
+               ecm+=(1/len(self.layers[-1]))*( node.value-expected_value )**2
+            print("numero de iteracion :",x,"\nvalor predicho por la red :" ,data_predicted,"\nvalor esperado de la red :",expected_value)
+            print("error cuadrado medio :",ecm)#                IMPRIMIR EN PANTALLA 
+  #     #                                                       print('cls') limpiar pantalla
 
 
 
         return None
+
     def tests (self,instancias_pruebas,numIteraciones):
 
         L=instancias_pruebas
@@ -161,17 +184,6 @@ class Red:
             print("numero de iteracion :"+x+"\nvalor predicho por la red :" + label(data_red)+"\nvalor esperado de la red :"+label(tests[x][0]))
         return None    
 
-
-
-def leer_dataset():
-    ruta="ruta.png"# funcion get para instalar #70% de las lineas es para entrenar (le paso pixeles y paso el valor esperado (0 a 9), el otro 30% de los casos le paso pixeles)
-                    # y me retorna el numero de que cree que es
-
-    L=list()
-    L.append(1)
-    L.append(2)
-    L.append(3)
-    return L
 
 def generate_text(key):
 
@@ -211,15 +223,25 @@ def label(key): #crear epsilon
 #tests_pruebas=L[1]       # lista con el dataset y el valor esperado([1,2,3,4,etc.],9) =A
 learningRate=0.7
 pixels_total=784
+archive_1="fashion-1.csv"
+archive_2="fashion-2.csv"
+
+
 
 r =Red(None)                #70% del dataset = entrenamiento ; 30% del dataset siguiente es para test ( ver que wea es con los pixeles que le doi) , funcion leer dataset
 r.CrearRedVacia()           #predecir cuando este entrenada la red , por default aun esta sin entrenar (pesos aleatorios tira cualquier wea),
-r.AgregarCapa(pixels_total) # CALMAO 
-r.AgregarCapa(pixels_total)
-r.AgregarCapa(pixels_total)
-r.AgregarCapa(pixels_total)
+r.AgregarCapa(3) # CALMAO 
+r.AgregarCapa(3) #pixels_total
 r.AgregarCapa(1)
 r.next_layers()
+
+#A=leercsv.read_dataset(archive_1) # me retorna solo training por ahora
+
+
+A=[(1,[100,40,50]),(2,[33,70,200]),(3,[200,160,102]),(4,[33,40,130])]
+
+r.entrenar(A,learningRate)
+
 
 
 #r.entrenar(tests_entrenamiento,len(tests_entrenamiento),learningRate)
