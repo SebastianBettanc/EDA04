@@ -221,6 +221,7 @@ r.AgregarCapa(pixels_total)
 r.AgregarCapa(1)
 r.next_layers()
 
+
 #r.entrenar(tests_entrenamiento,len(tests_entrenamiento),learningRate)
 #r.tests(tests_pruebas,len(tests_pruebas))
 
