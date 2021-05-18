@@ -20,12 +20,9 @@ def read_dataset(archive): #app 35k datos , por archivo dejaremos 24,5k entrenam
         #
         #line=[400,1,2,3,4,5,6,7,8,9]
         #
-        #
-        asdf=line
-        
           
 
-        if x<100:
+        if x<2000:
             
             line_num=[int(i) for i in line]
 
@@ -38,7 +35,7 @@ def read_dataset(archive): #app 35k datos , por archivo dejaremos 24,5k entrenam
 
             x+=1
 
-        elif x>=100 and x<101:
+        elif x>=2000 and x<2010:
             x+=1
         else:
             break  
