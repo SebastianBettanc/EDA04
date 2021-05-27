@@ -162,8 +162,6 @@ class Red:
         for node in self.layers[-1]: 
             ecm+=(1/len(self.layers[-1]))*( node.value-expected_value )**2
             errors.append(ecm*0.5)
-        #print("numero de iteracion :",1,"\nvalor predicho por la red :" ,data_predicted,"\nvalor esperado de la red :",expected_value)
-        #print("error cuadrado medio :",ecm)  
 
         x=2
         for test in tests[1:]:#                                     largo del dataset
@@ -178,8 +176,6 @@ class Red:
             for node in self.layers[-1]: 
                ecm+=(1/len(self.layers[-1]))*( node.value-expected_value )**2
             errors.append(ecm*0.5)
-            #print("numero de iteracion :",x,"\nvalor predicho por la red :" ,data_predicted,"\nvalor esperado de la red :",expected_value)
-            #print("error cuadrado medio :",ecm)
             x+=1               
 
         return errors
@@ -234,27 +230,17 @@ archive_2="fashion-2.csv"
 
 r =Red(None)                #70% del dataset = entrenamiento ; 30% del dataset siguiente es para test ( ver que wea es con los pixeles que le doi) , funcion leer dataset
 r.CrearRedVacia()           #predecir cuando este entrenada la red , por default aun esta sin entrenar (pesos aleatorios tira cualquier wea),
-r.AgregarCapa(pixels_total) # CALMAO 
+r.AgregarCapa(pixels_total) 
 r.AgregarCapa(10) #pixels_total
 r.AgregarCapa(10)
 r.AgregarCapa(1)
 r.next_layers()#calculo y la wea
-#
-#void calculaNuevoPeso(learningRate, valorEsperado):
-#    List neuronas
-#    List pesosNeuronasAux
-#    for neurona in neuronas:
-#       delta_actual = ((1/(1+e^-x))- valorEsperado)*    ((1/(1+e^-x)(1 - (1/(1+e^-x)))
-#       Gradiente = delta * neurona.retornaValor()
-#       nuevo_peso = neurona.peso - learningRate*Gradiente
-#       pesosNeuronasAux.push(nuevo_peso)
-#
+
+
 
 
 A=leercsv.read_dataset(archive_1) # me retorna solo training por ahora
 
-
-#A=[(1,[100,40,50]),(2,[33,70,200]),(3,[200,160,102]),(4,[33,40,130])]
 
 mc=r.entrenar(A,learningRate)
 
