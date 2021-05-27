@@ -1,7 +1,7 @@
 import math as mt
 import random
 import leercsv
-
+import matplotlib.pyplot as plt
 
 class Neuron:
 
@@ -103,7 +103,8 @@ class Red:
         weights=neuron.weights
         total=0
         for i in range(len(layer)):
-            total+=layer[i].activation()*weights[i]
+            total+=layer[i].activation()*weights[i] 
+        value= total #+ bias
         return total
 
     def predict(self,input):
@@ -129,9 +130,7 @@ class Red:
             for j in range(len(self.layers[i])):
 
                 self.layers[i][j].next_layer=self.layers[i+1]
-        
         return None
-
 
 
     def actualizaPesos(self,learningRate,valorEsperado): 
@@ -158,12 +157,13 @@ class Red:
 
         self.actualizaPesos(learningRate,expected_value)#   valor_esperado de la instancia_entrenamiento aqui xd
 
-
+        errors=[]
         ecm=0
         for node in self.layers[-1]: 
             ecm+=(1/len(self.layers[-1]))*( node.value-expected_value )**2
-        print("numero de iteracion :",1,"\nvalor predicho por la red :" ,data_predicted,"\nvalor esperado de la red :",expected_value)
-        print("error cuadrado medio :",ecm)  
+            errors.append(ecm*0.5)
+        #print("numero de iteracion :",1,"\nvalor predicho por la red :" ,data_predicted,"\nvalor esperado de la red :",expected_value)
+        #print("error cuadrado medio :",ecm)  
 
         x=2
         for test in tests[1:]:#                                     largo del dataset
@@ -177,11 +177,12 @@ class Red:
             ecm=0
             for node in self.layers[-1]: 
                ecm+=(1/len(self.layers[-1]))*( node.value-expected_value )**2
-            print("numero de iteracion :",x,"\nvalor predicho por la red :" ,data_predicted,"\nvalor esperado de la red :",expected_value)
-            print("error cuadrado medio :",ecm)
+            errors.append(ecm*0.5)
+            #print("numero de iteracion :",x,"\nvalor predicho por la red :" ,data_predicted,"\nvalor esperado de la red :",expected_value)
+            #print("error cuadrado medio :",ecm)
             x+=1               
 
-        return None
+        return errors
 
     def tests (self,instancias_pruebas,numIteraciones):
 
@@ -226,7 +227,7 @@ def label(key): #crear epsilon
     else:
         return "No es ropa"
 
-learningRate=0.7
+learningRate=0.05
 pixels_total=784
 archive_1="fashion-1.csv"
 archive_2="fashion-2.csv"
@@ -235,26 +236,6 @@ r =Red(None)                #70% del dataset = entrenamiento ; 30% del dataset s
 r.CrearRedVacia()           #predecir cuando este entrenada la red , por default aun esta sin entrenar (pesos aleatorios tira cualquier wea),
 r.AgregarCapa(pixels_total) # CALMAO 
 r.AgregarCapa(10) #pixels_total
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
-r.AgregarCapa(10)
 r.AgregarCapa(10)
 r.AgregarCapa(1)
 r.next_layers()#calculo y la wea
@@ -275,4 +256,12 @@ A=leercsv.read_dataset(archive_1) # me retorna solo training por ahora
 
 #A=[(1,[100,40,50]),(2,[33,70,200]),(3,[200,160,102]),(4,[33,40,130])]
 
-r.entrenar(A,learningRate)
+mc=r.entrenar(A,learningRate)
+
+
+plt.grid()
+plt.plot(range(2000),mc)
+plt.title('Error vs numero de iteraciones')
+plt.xlabel('Numero de iteracion') 
+plt.ylabel('Error cuadrado')
+plt.show()
