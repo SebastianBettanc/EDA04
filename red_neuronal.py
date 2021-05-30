@@ -23,10 +23,6 @@ def derivate(value):
     return f
 
 
-
-
-
-
 class Red:
 
     def __init__(self,layers):
@@ -107,7 +103,7 @@ class Red:
 
                     for y in range(len(neuron.prev_layer)):
                         gradient=delta*neuron.prev_layer[y].value
-                        new_w=neuron.weights[y]+learningRate*gradient
+                        new_w=neuron.weights[y]-learningRate*gradient
                         new_weights.append(new_w)
 
                     neuron.aux_w=new_weights
@@ -120,7 +116,7 @@ class Red:
 
                     for x in range(len(neuron.prev_layer)):
                         gradient=delta*neuron.prev_layer[x].value
-                        new_w=neuron.weights[x]+learningRate*gradient
+                        new_w=neuron.weights[x]-learningRate*gradient
                         new_weights.append(new_w)
                     neuron.aux_w=new_weights
 
@@ -160,7 +156,7 @@ class Red:
             self.forward_propagation(input)
             for node in self.layers[-1]: 
                 error=( node.value-expected_value )
-            if (error<0.1):
+            if (error<=0.01):
                 right+=1
 
 
@@ -170,7 +166,7 @@ class Red:
 
         return acc
 
-learningRate=0.05  #0.05
+learningRate=0.1  #0.05
 path="data.csv"
 input_lenght=13
 
@@ -183,8 +179,6 @@ r.AgregarCapa(1)
 
 A=leercsv.read_dataset(path)
 samples=random.sample(A,len(A))
-
-
 
 
 
