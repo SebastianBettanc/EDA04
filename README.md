@@ -16,9 +16,14 @@ Correr el archivo neuron.py
 
 # 🟥Explicacion problema
 
-Nuestro problema consiste en que dado un dataset P ,que contiene la informacion de canciones (vector A) y un valor esperado(B) ,
-queremos predecir una red dado un vector cualquiera(A en este caso de ejemplo), 
-el valor predicho poor nuestra red sea lo mas cercano posible al valor esperado  
+Dado un dataset de canciones P ,
+P contiene informacion de las canciones y un valor esperado de estas, este valor esperado nos indica si el usuario le gusto o no la cancion (0 o 1)
+Nuestro problema consiste en que dado un vector de informacion de una cancion cualquiera , este prediga si al usuario le gusta o no la cancion 
+
+Para esto utilizaremos una red neuronal , de la cual utilizaremos 70% del dataset para entrenarla , y el otro 30% la usaremos para ver que tan confiable es ,()
+
+
+
 
 ---------------------------------------------------
 
