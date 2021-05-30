@@ -14,7 +14,7 @@ Correr el archivo main.py
 -----------------------------------------------------
 
 
-#🟥Explicacion problema
+# 🟥Explicacion problema
 
 
 ---------------------------------------------------
