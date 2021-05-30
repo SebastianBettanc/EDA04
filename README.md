@@ -16,7 +16,9 @@ Correr el archivo neuron.py
 
 # 🟥Explicacion problema
 
-Nuestro problema consiste en que dado un dataset P ,queremos predecir que 
+Nuestro problema consiste en que dado un dataset P ,que contiene la informacion de canciones (vector A) y un valor esperado(B) ,
+queremos predecir una red dado un vector cualquiera(A en este caso de ejemplo), 
+el valor predicho poor nuestra red sea lo mas cercano posible al valor esperado  
 
 ---------------------------------------------------
 
