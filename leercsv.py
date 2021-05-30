@@ -1,47 +1,37 @@
-import os
-import csv
-from collections import deque 
+import numpy as np
 
-def read_dataset(archive): #app 35k datos , por archivo dejaremos 24,5k entrenamiento ,app 10k pruebas
-    path=os.path.abspath(archive)# funcion get para instalar #70% de las lineas es para entrenar (le paso pixeles y paso el valor esperado (0 a 9), el otro 30% de los casos le paso pixeles)
-    file=open(path,"r")                # y me retorna el numero de que cree que es
-    reader=csv.reader(file)
-    next(reader)
-    x=0
-    k=0
-    training=list()
-    tests_p=list()
+def read_dataset(path): 
 
-    for line in reader:
+    cols=[]
+    for k in range(1,15):
+        cols.append(k)
+
+
+    trainig_N= np.loadtxt(path,skiprows=1,delimiter=',',usecols=cols,encoding="utf8") 
         
-        #print (line)
-        #
-        # training=list()
-        #
-        #line=[400,1,2,3,4,5,6,7,8,9]
-        #
-          
 
-        if x<2000:
-            
-            line_num=[int(i) for i in line]
+    training=list()
 
-            aux=deque((line_num))
-            estimate_value=aux.popleft()
-            pixels=list(aux)
-            test=(estimate_value,pixels)
-
-            training.append(test)
-
-            x+=1
-
-        elif x>=2000 and x<2010:
-            x+=1
-        else:
-            break  
+    for row in trainig_N:
+        
+        aux=list()
+        aux.append(row[0])
+        aux.append(row[1])
+        aux.append(row[2]/1004627) #/1004627
+        aux.append(row[3])
+        aux.append(row[4])
+        aux.append(row[5]) 
+        aux.append(row[6])
+        aux.append(row[7]/33) #/33
+        aux.append(row[8])
+        aux.append(row[9])
+        aux.append(row[10]/219.331) #/219.331  #
+        aux.append(row[11]/5)  #/5
+        aux.append(row[12])
    
+        value=(row[-1],aux)
+        training.append(value)
 
 
-    file.close()
 
     return training
