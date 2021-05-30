@@ -1,6 +1,5 @@
 # EDA04
 
-# EDA03
 🟦Nombre:Sebastian Bettancourt Villaseca Rut:19341715-9
 
 
@@ -15,7 +14,7 @@ Correr el archivo main.py
 -----------------------------------------------------
 
 
-🟥Explicacion problema
+#🟥Explicacion problema
 
 
 ---------------------------------------------------
