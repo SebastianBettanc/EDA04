@@ -93,7 +93,7 @@ El valor de 1 neurona que no sea input viene dado por:
 Donde wi=pesos y v1=valores de la neurondas anteriores
 
 -------
-Al valor obtenido de la sumatorioa se le aplicara la funcion sigmoide :
+Al valor obtenido de la sumatoria anterior se le aplica la funcion sigmoide :
 
 ![sigmoid](https://user-images.githubusercontent.com/82010968/120178269-5437bb00-c1d7-11eb-8726-b96be7d412f0.png)
 
