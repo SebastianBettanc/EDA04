@@ -16,11 +16,19 @@ Correr el archivo neuron.py
 
 # 🟥Explicacion problema
 
-Dado un dataset de canciones P ,
-P contiene informacion de las canciones y un valor esperado de estas, este valor esperado nos indica si el usuario le gusto o no la cancion (0 o 1)
-Nuestro problema consiste en que dado un vector de informacion de una cancion cualquiera , este prediga si al usuario le gusta o no la cancion 
+Dado un dataset de canciones P ;
+P contiene informacion de las canciones (vector A) y un valor esperado de estas (B), B nos indica si el usuario le gusto o no la cancion (0 o 1)
+Nuestro problema consiste en que dado un vector A cualquiera , generar un valor C tal que C==B .
 
-Para esto utilizaremos una red neuronal , de la cual utilizaremos 70% del dataset para entrenarla , y el otro 30% la usaremos para ver que tan confiable es ,()
+
+
+Para esto utilizaremos una red neuronal ,que predice valores C dado vectores A. Estos valores C en un principio seran muy inexactos (seran muy distintos a B)
+para que estos valores C sean mas precicos a nuestra red la alimentaremos con casos de pruebas para que asi "aprenda" a predecir mejor estos valores C
+
+
+
+
+
 
 
 
