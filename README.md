@@ -76,17 +76,12 @@ atributos a normalizar tabla 1 |
 
 la tabla se normaliza para solo tenga valores entre 0 y 1 , antes de ingresarlo a la layer de input.
 
-Para calcular los valores de las neuronas de la layer siguieten , estos valores dependeran de los pesos y valores de la layer anterior
+la segunda layer contendra 10 neuronas , la tercera 7 neuronas y finalmente la layer de output 1 neurona
 
 ![red](https://user-images.githubusercontent.com/82010968/120174440-19338880-c1d3-11eb-81f2-7873b15a5233.png)
 
 
-
-
-
-
-
-, notar que 
+Para calcular los valores de la segunda layer en adelante dependera de los pesos y valores de la layer anterior junto a una funcion de activacion.
 
 
 
@@ -94,23 +89,9 @@ Para calcular los valores de las neuronas de la layer siguieten , estos valores 
 
 
 
-Una red neuronal
 
 
-consiste de neuronas dentro de capas , existen 3 tipos de capas , input layer , hidden layers y output layers. 
 
-
-![Hidden-layrs-1-i2tutorials](https://user-images.githubusercontent.com/82010968/120152084-090faf00-c1bb-11eb-817a-b5ecde4f29d4.jpg)
-
-
-la capa de input layer , recibe el vector de valores y cada valor del vector se lo asigna a cada neurona de la capa de input.
-
-Para nuestro caso particular input layer sera de largo 13 y recibira el onehotcoding del vectorA *(ver figura 1)*:
-
-
-**onehotcoding(A)** consiste en que el vectorA solo entrege valores entre 0 y 1(normalizarlo)
-
-Para la primera iteracion los pesos seran aletorios.
 
 
 
