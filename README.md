@@ -85,12 +85,23 @@ Para calcular los valores de la segunda layer en adelante dependera de los pesos
 
 A continuacion se explicara como calcular el valor de 1 neurona:
 
+---------
+El valor de 1 neurona que no sea input viene dado por:
+
 ![forward_formula](https://user-images.githubusercontent.com/82010968/120178263-526df780-c1d7-11eb-8fc8-322a0d943165.png)
+
+Donde wi=pesos y v1=valores de la neurondas anteriores
+
+-------
+Al valor obtenido de la sumatorioa se le aplicara la funcion sigmoide :
 
 ![sigmoid](https://user-images.githubusercontent.com/82010968/120178269-5437bb00-c1d7-11eb-8726-b96be7d412f0.png)
 
+-------
+A continuacion se muestra un ejemplo :
 
-![ejemplo_forward](https://user-images.githubusercontent.com/82010968/120178275-569a1500-c1d7-11eb-8701-abbc4e53103c.png)
+![ejemplo_forward2](https://user-images.githubusercontent.com/82010968/120179021-18512580-c1d8-11eb-8a18-0de374704985.png)
+
 
 
 
