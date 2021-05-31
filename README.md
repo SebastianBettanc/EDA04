@@ -62,7 +62,7 @@ Estos valores predichos en un principio seran muy inexactos (seran muy distintos
 La red neural consiste en layers (capas) con neuronas dentro de estas, existen 3 tipos de layers , input , hidden y output layer. a las neuronas de la layer input le entregaremos valores los cuales serviran para calcular los valores de las demas neurondas en las otras layers , para al final generar un valor de output (valor predicho por la red) en la ultima layer 
 
 
-Nuestra red neural contendra  1 layer de input , 2 layers hidden y 1 layer de output.
+Nuestra red neural contendra  1 layer de input , 2 layers hidden y 1 layer de output; Se inicializara con pesos aletorios.
 
 La layer de input tendra 13 neuronas, cada neurona corresponde al valor de los atributos de la tabla 1 normalizada menos el valor de target 
 
@@ -81,10 +81,24 @@ la segunda layer contendra 10 neuronas , la tercera 7 neuronas y finalmente la l
 ![red](https://user-images.githubusercontent.com/82010968/120174440-19338880-c1d3-11eb-81f2-7873b15a5233.png)
 
 
-Para calcular los valores de la segunda layer en adelante dependera de los pesos y valores de la layer anterior junto a una funcion de activacion.
+Para calcular los valores de la segunda layer en adelante dependera de los pesos y valores de la layer anterior junto a una funcion de activacion (sigmoide).
 
+A continuacion se explicara como calcular el valor de 1 neurona:
 
+!imagen formula
+!imagen formula
 
+!imagen neurona con calculos
+
+Se repetira el proceso para todas las neurondas de la red hasta obtener un valor de output, a este proceso se le denomina forward propagation.
+
+Se calculara el error entre el valor predicho y el valor esperado para un vector dado (valor target),para calcular el error de una prediccion se usa la formula:
+
+!formula de error
+
+Para que la red "aprenda" debe mimizar este error lo mas posible, para lograr esto tiene que ir ajustando todos los pesos de la red de manera que la prediccion sea mas "certera". Este proceso se demonia back propagation.
+
+Back propagation va ajustando los pesos desde la layer de output hacia input, la cantidad que tiene que modificar cada peso depende de un delta,learningRate y los valores de la neurona de la capa actual con la anterior
 
 
 
