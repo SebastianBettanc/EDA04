@@ -100,16 +100,17 @@ Al valor obtenido de la sumatoria anterior se le aplica la funcion sigmoide :
 -------
 A continuacion se muestra un ejemplo :
 
-![ejemplo_forward2](https://user-images.githubusercontent.com/82010968/120179021-18512580-c1d8-11eb-8a18-0de374704985.png)
+![ej_forward](https://user-images.githubusercontent.com/82010968/120179510-aa592e00-c1d8-11eb-863c-7136cbaf9f06.png)
 
 
+Se repetira el proceso para todas las neuronas de la red hasta obtener un valor de output, a este proceso se le denomina forward propagation.
 
+El valor del output correspondera al valor predicho por la red,se calculara el error entre este valor predicho y el valor esperado ,para calcular el error de una prediccion se usa la formula:
 
-Se repetira el proceso para todas las neurondas de la red hasta obtener un valor de output, a este proceso se le denomina forward propagation.
+![error](https://user-images.githubusercontent.com/82010968/120179710-ec826f80-c1d8-11eb-98f9-851fc2f52f6f.png)
 
-Se calculara el error entre el valor predicho y el valor esperado para un vector dado (valor target),para calcular el error de una prediccion se usa la formula:
+donde 𝑦=valor predicho e 𝑦^=valor esperado 
 
-!formula de error
 
 Para que la red "aprenda" debe mimizar este error lo mas posible, para lograr esto tiene que ir ajustando todos los pesos de la red de manera que la prediccion sea mas "certera". Este proceso se demonia back propagation.
 
