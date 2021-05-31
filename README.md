@@ -59,7 +59,10 @@ Estos valores predichos en un principio seran muy inexactos (seran muy distintos
  
 # 🟩Neural network 
 
-Nuestra red neural contendra 4 layers, 1 layer de input , 2 layers hidden y 1 layer de output.
+La red neural consiste en layers (capas) con neuronas dentro de estas, existen 3 tipos de layers , input , hidden y output layer. a las neuronas de la layer input le entregaremos valores los cuales serviran para calcular los valores de las demas neurondas en las otras layers , para al final generar un valor de output (valor predicho por la red) en la ultima layer 
+
+
+Nuestra red neural contendra  1 layer de input , 2 layers hidden y 1 layer de output.
 
 La layer de input tendra 13 neuronas, cada neurona corresponde al valor de los atributos de la tabla 1 normalizada menos el valor de target 
 
