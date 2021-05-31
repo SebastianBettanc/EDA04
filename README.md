@@ -45,31 +45,9 @@ valence 	|Float [0-1] medida que está relacionada con la positividad de una can
 
 Para predecir si una cancion en particular le gusta o no al usuario utlizaremos una red neuronal.
 
+Esta red neuronal predice valores dado un vector. 
 
-
-
-
-
-Dado un dataset de canciones P ;
-
-P contiene informacion de las canciones (vector A) y un valor esperado de estas (B), B nos indica si el usuario le gusto o no la cancion (0 o 1)
-
-1 vector de informacion de una cancion se compondran de los siguientes atributos:
-
-
-
-***figura1***
-
-Nuestro problema consiste en que dado un vector A cualquiera , generar un valor C tal que C==B .
-
-
-
-
-Para esto utilizaremos una red neuronal ,que predice valores C dado vectores A. 
-
-Estos valores C en un principio seran muy inexactos (seran muy distintos a B), para que estos valores C sean mas precicos a nuestra red la alimentaremos con casos de pruebas para que asi "aprenda" a predecir mejor estos valores C.
-
-A continuacion se explica como esta red neuroanl " aprende ".
+Estos valores predichos en un principio seran muy inexactos (seran muy distintos al valor esperado), para que estos valores predichos sean mas precisos a nuestra red la alimentaremos con casos de pruebas para que asi "aprenda" a predecir mejores valores, estos casos de prueba corresponderan a 1400 canciones tomadas al azar del dataset. 
 
 
 
