@@ -155,7 +155,7 @@ class Red:
             input=sample[1]
             self.forward_propagation(input)
             for node in self.layers[-1]: 
-                error=( node.value-expected_value )
+                error=abs(expected_value-node.value)
             if (error<=0.01):
                 right+=1
 
@@ -166,7 +166,7 @@ class Red:
 
         return acc
 
-learningRate=0.1  #0.05
+learningRate=0.3  #0.05
 path="data.csv"
 input_lenght=13
 
