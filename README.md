@@ -36,7 +36,16 @@ A continuacion se explica como esta red neuroanl " aprende ".
  
 # 🟩Neural network 
 
-Una red neuronal consiste de neuronas .
+Una red neuronal consiste de neuronas dentro de capas , existen 3 tipos de capas , input layer , hidden layers y output layers. 
+
+
+![Hidden-layrs-1-i2tutorials](https://user-images.githubusercontent.com/82010968/120152084-090faf00-c1bb-11eb-817a-b5ecde4f29d4.jpg)
+
+
+la capa de input layer , recibe el vector de valores y cada valor del vector se lo asigna a cada neurona de la capa de input.
+
+
+las capas hidden layer , calculan sus valores 
 
 
 
