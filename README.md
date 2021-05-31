@@ -42,6 +42,8 @@ time_signature|Entero [1-5] medida del compás de la canción.
 valence 	|Float [0-1] medida que está relacionada con la positividad de una canción.
 **target** |Binario [0-1] si al usuario le gustó la canción o no. *Valor Esperado*
 
+***tabla1***
+
 
 Para predecir si una cancion en particular le gusta o no al usuario utlizaremos una red neuronal.
 
@@ -56,6 +58,31 @@ Estos valores predichos en un principio seran muy inexactos (seran muy distintos
 
  
 # 🟩Neural network 
+
+Nuestra red neural contendra 4 layers, 1 layer de input , 2 layers hidden y 1 layer de output.
+
+La layer de input tendra 13 neuronas, cada neurona corresponde al valor de los atributos de la tabla 1 normalizada menos el valor de target 
+
+ 
+atributos a normalizar tabla 1 |
+---------------------|
+*duration_ms/1004627 |
+*loudness/33         |
+*tempo/219.331       |
+*time_signature/5    | 
+
+la tabla se normaliza para solo tenga valores entre 0 y 1 , antes de ingresarlo a la layer de input.
+
+Para calcular los valores de las demas layers.Cada valor depende de los pesos y los valores de la layer anterior. 
+
+
+, notar que 
+
+
+
+
+
+
 
 Una red neuronal
 
