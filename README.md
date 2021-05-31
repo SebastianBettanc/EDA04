@@ -98,7 +98,31 @@ Se calculara el error entre el valor predicho y el valor esperado para un vector
 
 Para que la red "aprenda" debe mimizar este error lo mas posible, para lograr esto tiene que ir ajustando todos los pesos de la red de manera que la prediccion sea mas "certera". Este proceso se demonia back propagation.
 
-Back propagation va ajustando los pesos desde la layer de output hacia input, la cantidad que tiene que modificar cada peso depende de un delta,learningRate y los valores de la neurona de la capa actual con la anterior
+Back propagation va ajustando los pesos desde la layer de output hacia input, la cantidad que tiene que modificar cada peso depende de un delta,learningRate (valor constante) y los valores de la neurona de la capa actual con la anterior.
+
+Primero se calculara el delta de la neurona.
+
+Si la neurona es de la layer de output, su delta viene dado por la formula de :
+
+!formula delta output
+
+Si la neurona es de una layer hidden , su delta viene dado por la formula de:
+
+!formual delta normal
+
+La formula para cambiar los pesos es de :
+
+!formula cambiar pesos
+
+Notar que una vez calculados los pesos nuevos los guardamos en una variable , no actualizamos la red con estos nuevos pesos inmediatamente ya que los deltas de las neuronas de las layers hidden depende de los pesos no modificados de esta. 
+
+Una vez calculados todos los pesos nuevos, updateamos la red con los nuevos valores .
+
+Este proceso se repite con el training de datos (forward propagation,back propagation , update_pesos), (1400 veces ,70% de las canciones) 
+y repetimos el proceso anterior una cantidad epoch=100.
+
+
+Una vez entrenada nuestra red , simplemente calculamos su % de valores correctos con el 30% de las canciones con la que no entrenamos la red.
 
 
 
@@ -111,32 +135,14 @@ Back propagation va ajustando los pesos desde la layer de output hacia input, la
 
 
 
-
-
-
-
-
-
-
-las capas hidden layer , calculan sus valores 
 
 
 
 ------------------------------------------
 
 
-  
 
-------------------------------
-
-
-
-
-
-
--------------------------
-
-🟪Seccion1
+🟪
 
 
 🔴Resultados
