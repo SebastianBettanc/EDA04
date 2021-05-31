@@ -76,7 +76,14 @@ atributos a normalizar tabla 1 |
 
 la tabla se normaliza para solo tenga valores entre 0 y 1 , antes de ingresarlo a la layer de input.
 
-Para calcular los valores de las demas layers.Cada valor depende de los pesos y los valores de la layer anterior. 
+Para calcular los valores de las neuronas de la layer siguieten , estos valores dependeran de los pesos y valores de la layer anterior
+
+![red](https://user-images.githubusercontent.com/82010968/120174440-19338880-c1d3-11eb-81f2-7873b15a5233.png)
+
+
+
+
+
 
 
 , notar que 
