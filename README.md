@@ -24,6 +24,7 @@ Nuestro problema consiste en que dado un vector A cualquiera , generar un valor 
 
 
 
+
 Para esto utilizaremos una red neuronal ,que predice valores C dado vectores A. 
 
 Estos valores C en un principio seran muy inexactos (seran muy distintos a B), para que estos valores C sean mas precicos a nuestra red la alimentaremos con casos de pruebas para que asi "aprenda" a predecir mejor estos valores C.
