@@ -85,10 +85,14 @@ Para calcular los valores de la segunda layer en adelante dependera de los pesos
 
 A continuacion se explicara como calcular el valor de 1 neurona:
 
-!imagen formula
-!imagen formula
+![forward_formula](https://user-images.githubusercontent.com/82010968/120178263-526df780-c1d7-11eb-8fc8-322a0d943165.png)
 
-!imagen neurona con calculos
+![sigmoid](https://user-images.githubusercontent.com/82010968/120178269-5437bb00-c1d7-11eb-8726-b96be7d412f0.png)
+
+
+![ejemplo_forward](https://user-images.githubusercontent.com/82010968/120178275-569a1500-c1d7-11eb-8701-abbc4e53103c.png)
+
+
 
 Se repetira el proceso para todas las neurondas de la red hasta obtener un valor de output, a este proceso se le denomina forward propagation.
 
