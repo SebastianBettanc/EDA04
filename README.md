@@ -63,7 +63,7 @@ Una red neuronal consiste de neuronas .
 ------
 
 
-⬛VIDEO EXPLICATIVO LINK = 
+⬛VIDEO EXPLICATIVO LINK = https://youtu.be/3fYE5sh8Ijw
 
 
 Coevaluacion 
