@@ -1,7 +1,6 @@
 # EDA04
 
-🟦Nombre:Sebastian Bettancourt Villaseca Rut:19341715-9
-
+🟦Nombre:Sebastian B.
 
 Estructura de datos y algoritmos avanzados , Problema 4 redes neuronales
 
